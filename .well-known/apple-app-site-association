@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "com.squintwerks.ARTest_Vuforia",
+        "paths": ["/open/*"]
+      }
+    ]
+  }
+}

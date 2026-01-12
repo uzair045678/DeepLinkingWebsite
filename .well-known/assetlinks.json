@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "",
+      "package_name": "com.squintwerks.ARTest_Vuforia",
+      "sha256_cert_fingerprints": [
+        "A25:3A:01:2E:B9:EF:FB:7E:3B:EF:09:DB:75:99:73:27:83:7E:87:F3:D1:8A:53:08:48:01:FA:07:E0:CD:AA:7B"
+      ]
+    }
+  }
+]

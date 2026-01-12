@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open AR Experience</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f6f7fb;
+}
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.btn {
+    display: block;
+    padding: 14px;
+    margin: 12px 0;
+    font-size: 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    background: #007bff;
+}
+.secondary {
+    background: #111;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Open AR Experience</h1>
+    <p>Tap below to open the experience in the app.</p>
+
+    <a id="openBtn" class="btn">Open in App</a>
+    <a id="downloadBtn" class="btn secondary">Download App</a>
+
+    <p>Content ID: <strong id="contentID"></strong></p>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+// Support both param names
+const id = params.get("itemId") || params.get("id") || "unknown";
+
+// Update UI
+document.getElementById("contentID").innerText =
+    id !== "unknown" ? id : "Not provided";
+
+// URLs
+const universalLink =
+  "https://illustrious-taffy-f4b309.netlify.app/open?itemId=" + id;
+
+const customScheme =
+  "myapp://open?itemId=" + id;
+
+// Device detection
+const ua = navigator.userAgent;
+const isAndroid = /Android/i.test(ua);
+const isIOS = /iPhone|iPad|iPod/i.test(ua);
+
+document.getElementById("openBtn").onclick = () => {
+
+    // 1️⃣ Try universal link
+    window.location.href = universalLink;
+
+    // 2️⃣ Fallback to custom scheme
+    setTimeout(() => {
+        window.location.href = customScheme;
+    }, 1500);
+
+    // 3️⃣ Final message
+    setTimeout(() => {
+        alert("If nothing happened, install the app first.");
+    }, 1500);
+};
+</script>
+
+</body>
+</html>
